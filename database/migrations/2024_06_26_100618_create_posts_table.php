@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedInteger('level')->default(0);
+            $table->unsignedInteger('like')->default(0);
             $table->text('content');
             $table->timestamps();
 

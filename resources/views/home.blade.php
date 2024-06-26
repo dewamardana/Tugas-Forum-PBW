@@ -2,6 +2,17 @@
 
 @section('content')
     <h1>Welcome to Social App</h1>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
     @auth
         <form action="{{ url('/posts') }}" method="POST">
@@ -27,6 +38,7 @@
                     <button type="submit" class="btn btn-secondary">Comment</button>
                 </form>
                 <form action="{{ url('/posts/' . $post->id . '/like') }}" method="POST">
+                    <p>{{ $post->like }}</p>
                     @csrf
                     <button type="submit" class="btn btn-success">Like</button>
                 </form>
